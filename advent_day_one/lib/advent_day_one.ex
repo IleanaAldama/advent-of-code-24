@@ -7,10 +7,7 @@ defmodule AdventDayOne do
 
     {list1, list2} =
       input
-      |> String.split("\n")
-      |> Enum.map(&String.split/1)
-      |> List.flatten()
-      |> Enum.filter(&(String.length(&1) >= 1))
+      |> String.split(~r{\s}, trim: true)
       |> Enum.map(&String.to_integer/1)
       |> Enum.with_index()
       |> Enum.reduce({[], []}, fn {current, index}, {list1, list2} ->
